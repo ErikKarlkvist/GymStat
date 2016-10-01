@@ -44,13 +44,9 @@ public class CustomListAdapter extends ArrayAdapter<String>{
         TextView exc = (TextView) customView.findViewById(R.id.set_view_excersise);
         TextView setWeigh = (TextView) customView.findViewById(R.id.set_view_weight);
 
-        System.out.println(setHead);
-        System.out.println(exc);
-        System.out.println(setWeigh);
-
         setHead.setText(setName);
-        exc.setText(ex);
-        setWeigh.setText(weigth);
+        exc.setText(getContext().getResources().getString(R.string.excersises) + " " +ex);
+        setWeigh.setText(getContext().getResources().getString(R.string.weight) + " " +weigth);
         return customView;
     }
 
