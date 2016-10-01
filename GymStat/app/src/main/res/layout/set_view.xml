@@ -16,33 +16,45 @@
         android:layout_width="fill_parent"
         android:layout_height="128dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Small Text"
-            android:id="@+id/set_header"
-            style="@style/head_font"
-            android:padding="@dimen/activity_horizontal_margin"
-            />
 
-
-        <TextView
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/excersises"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:id="@+id/set_view_excersise"
-            style="@style/normal_font"
-            />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/weight"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            style="@style/normal_font"
-            android:id="@+id/set_view_weight" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Small Text"
+                    android:id="@+id/set_header"
+                    style="@style/head_font"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/exercises"
+                    android:paddingLeft="@dimen/activity_vertical_margin"
+                    android:id="@+id/set_view_excersise"
+                    style="@style/normal_font"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/weight"
+                    android:paddingLeft="@dimen/activity_vertical_margin"
+                    style="@style/normal_font"
+                    android:id="@+id/set_view_weight" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -9,9 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Erik Karlkvist on 2016-09-29.
@@ -45,7 +42,7 @@ public class CustomListAdapter extends ArrayAdapter<String>{
         TextView setWeigh = (TextView) customView.findViewById(R.id.set_view_weight);
 
         setHead.setText(setName);
-        exc.setText(getContext().getResources().getString(R.string.excersises) + " " +ex);
+        exc.setText(getContext().getResources().getString(R.string.exercises) + " " +ex);
         setWeigh.setText(getContext().getResources().getString(R.string.weight) + " " +weigth);
         return customView;
     }

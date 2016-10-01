@@ -4,6 +4,8 @@ package com.gymapp.erikkarlkvist.gymstat;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,8 +34,10 @@ public class AddSetFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_set, container, false);
+
     }
 
     @Override
@@ -43,6 +47,11 @@ public class AddSetFragment extends Fragment {
         weight = (TextView) getView().findViewById(R.id.weight_text);
         name = (TextView) getView().findViewById(R.id.set_name_text);
         add.setOnClickListener(listener);
+
+     //  CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
+      //  p.setAnchorId(View.NO_ID);
+       // fab.setLayoutParams(p);
+        //fab.setVisibility(View.GONE);
     }
 
     View.OnClickListener listener = new View.OnClickListener() {

@@ -2,6 +2,7 @@ package com.gymapp.erikkarlkvist.gymstat;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -26,11 +27,13 @@ public class MainActivity extends AppCompatActivity
 
     NavigationView navigationView = null;
     Toolbar toolbar = null;
+    private static View mainActivityView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mainActivityView = findViewById(android.R.id.content);
         //set the fragment initially
         MainFragment fragment = new MainFragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -40,10 +43,12 @@ public class MainActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        showFab();
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                hideFab();
                 changeFragment(new AddSetFragment());
             }
         });
@@ -99,8 +104,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
+            showFab();
             changeFragment(new MainFragment());
         } else if (id == R.id.nav_gallery) {
+            hideFab();
             changeFragment(new AddSetFragment());
         } else if (id == R.id.nav_slideshow) {
             getSupportActionBar().setTitle("IDK m8");
@@ -115,6 +122,16 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public static void hideFab(){
+        FloatingActionButton fab = (FloatingActionButton) mainActivityView.findViewById(R.id.fab);
+        fab.hide();
+    }
+
+    public static void showFab(){
+        FloatingActionButton fab = (FloatingActionButton) mainActivityView.findViewById(R.id.fab);
+        fab.show();
     }
 
     private void changeFragment(Fragment fragment){
