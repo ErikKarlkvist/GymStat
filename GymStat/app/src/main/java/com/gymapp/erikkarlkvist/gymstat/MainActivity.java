@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity
 
     NavigationView navigationView = null;
     Toolbar toolbar = null;
-    static Set data = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

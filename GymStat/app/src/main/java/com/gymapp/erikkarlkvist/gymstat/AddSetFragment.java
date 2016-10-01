@@ -1,6 +1,8 @@
 package com.gymapp.erikkarlkvist.gymstat;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.Set;
 
 
 /**
@@ -23,7 +27,8 @@ public class AddSetFragment extends Fragment {
     private TextView excersise;
     private TextView weight;
     private TextView name;
-    private Set data;
+    String sNames = "setNames";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,12 +52,26 @@ public class AddSetFragment extends Fragment {
             String wgt = (weight.getText().toString());
             String setName = name.getText().toString();
 
-            Set set = new Set(setName, ex, wgt, "warning");
-            MainFragment.addSet(set);
+            addToPrefs(setName, ex, wgt);
             changeFragment(new MainFragment());
 
         }
     };
+
+    private void addToPrefs(String setName, String exercise, String weight) {
+        String sprefs = getResources().getString(R.string.sharedpreferences);
+        SharedPreferences prefs = getContext().getSharedPreferences(sprefs, Context.MODE_PRIVATE);
+        Set<String> setNames = prefs.getStringSet(sNames, null); // can't be null
+        setNames.add(setName);
+
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putStringSet(sNames, setNames);
+
+        editor.putString(setName+"e", exercise);
+        editor.putString(setName+"w", weight);
+        editor.commit();
+
+    }
 
     private void changeFragment(Fragment fragment){
         android.support.v4.app.FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
