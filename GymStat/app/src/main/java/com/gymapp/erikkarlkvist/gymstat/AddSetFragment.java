@@ -13,6 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 
 
@@ -26,9 +31,11 @@ public class AddSetFragment extends Fragment {
         // Required empty public constructor
     }
 
-    private TextView excersise;
     private TextView weight;
     private TextView name;
+    private TextView r;
+    private TextView r2;
+    private TextView desc;
     String sNames = "setNames";
 
     @Override
@@ -43,9 +50,11 @@ public class AddSetFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         Button add = (Button) getView().findViewById(R.id.add_set);
-        excersise = (TextView) getView().findViewById(R.id.excersise_text);
         weight = (TextView) getView().findViewById(R.id.weight_text);
         name = (TextView) getView().findViewById(R.id.set_name_text);
+        r = (TextView) getView().findViewById(R.id.reps_text);
+        r2 = (TextView) getView().findViewById(R.id.reps_text2);
+        desc = (TextView)getView().findViewById(R.id.set_description);
         add.setOnClickListener(listener);
 
      //  CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
@@ -57,17 +66,19 @@ public class AddSetFragment extends Fragment {
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String ex = excersise.getText().toString();
             String wgt = (weight.getText().toString());
             String setName = name.getText().toString();
+            String reps = r.getText().toString();
+            String reps2 = r2.getText().toString();
+            String description = desc.getText().toString();
 
-            addToPrefs(setName, ex, wgt);
+            addToPrefs(setName, wgt, reps, reps2, description);
             changeFragment(new MainFragment());
 
         }
     };
 
-    private void addToPrefs(String setName, String exercise, String weight) {
+    private void addToPrefs(String setName, String weight, String reps, String reps2, String description) {
         String sprefs = getResources().getString(R.string.sharedpreferences);
         SharedPreferences prefs = getContext().getSharedPreferences(sprefs, Context.MODE_PRIVATE);
         Set<String> setNames = prefs.getStringSet(sNames, null); // can't be null
@@ -76,8 +87,21 @@ public class AddSetFragment extends Fragment {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putStringSet(sNames, setNames);
 
-        editor.putString(setName+"e", exercise);
-        editor.putString(setName+"w", weight);
+        editor.putString(setName + "w", weight);
+        editor.putString(setName + "r", reps);
+        editor.putString(setName + "r2", reps2);
+
+        if(description != ""){
+            editor.putString(setName + "desc", description);
+        } else {
+            editor.putString(setName + "desc", "No description");
+        }
+
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd");
+        String sdate = sdf.format(date);
+
+        editor.putString(setName +"d", sdate);
         editor.commit();
 
     }

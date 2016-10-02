@@ -5,4 +5,5 @@
     <color name="colorPrimaryLight">#C8E6C9</color>
     <color name="colorBlack">#0d0000</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorWarningRed">#f13131</color>
 </resources>

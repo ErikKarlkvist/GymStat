@@ -5,27 +5,29 @@
 
     <ImageView
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="140dp"
         android:id="@+id/set_image"
-        android:paddingTop="@dimen/activity_horizontal_margin"
-        android:src="@drawable/default_no_image"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:src="@drawable/filip"
         />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="128dp">
+        android:layout_height="138dp">
 
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:gravity="left"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -33,15 +35,16 @@
                     android:text="Small Text"
                     android:id="@+id/set_header"
                     style="@style/head_font"
-                    android:padding="@dimen/activity_horizontal_margin"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
                     />
 
-                <TextView
+                TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/exercises"
-                    android:paddingLeft="@dimen/activity_vertical_margin"
+                    android:paddingRight="@dimen/activity_vertical_margin"
                     android:id="@+id/set_view_excersise"
                     style="@style/normal_font"
                     />
@@ -51,10 +54,31 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/weight"
-                    android:paddingLeft="@dimen/activity_vertical_margin"
+                    android:paddingRight="@dimen/activity_vertical_margin"
                     style="@style/normal_font"
                     android:id="@+id/set_view_weight" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/reps"
+                    android:paddingRight="@dimen/activity_vertical_margin"
+                    style="@style/normal_font"
+                    android:id="@+id/set_view_reps" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/date"
+                    android:id="@+id/set_view_date"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    style="@style/normal_font"
+                    />
             </LinearLayout>
+
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
