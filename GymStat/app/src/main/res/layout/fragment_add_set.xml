@@ -87,6 +87,7 @@
                 android:ems="10"
                 android:id="@+id/weight_text"
                 android:layout_weight="0.42"
+                android:nextFocusDown="@+id/reps_text"
                 android:singleLine="true"
                 android:maxLength="10"
                 />

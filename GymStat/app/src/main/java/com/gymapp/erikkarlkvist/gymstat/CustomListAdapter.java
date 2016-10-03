@@ -11,6 +11,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -37,20 +39,21 @@ public class CustomListAdapter extends ArrayAdapter<String>{
         SharedPreferences prefs = getContext().getSharedPreferences(sprefs, Context.MODE_PRIVATE);
 
         String setName = sets.get(position);
+        Gson gson = new Gson();
+        String json = prefs.getString(setName, "");
+        Data data = gson.fromJson(json, Data.class);
 
-        String weigth = prefs.getString(setName + "w", "N/A");
-        String reps = prefs.getString(setName + "r", "N/A");
-        String reps2 = prefs.getString(setName+"r2", "N/A");
-        String date = prefs.getString(setName+"d", "N/A");
 
         TextView setHead = (TextView) customView.findViewById(R.id.set_header);
         TextView setWeigh = (TextView) customView.findViewById(R.id.set_view_weight);
         TextView setReps = (TextView) customView.findViewById(R.id.set_view_reps);
         TextView setDate = (TextView) customView.findViewById(R.id.set_view_date);
 
+        String date = data.getDate(data.size);
+
         setHead.setText(setName);
-        setWeigh.setText(getContext().getResources().getString(R.string.weight2) + " " +weigth+ "kg");
-        setReps.setText(getContext().getResources().getString(R.string.reps) + " " + reps + "x" + reps2);
+        setWeigh.setText(getContext().getResources().getString(R.string.weight2) + " " +data.getWeight(data.size)+ "kg");
+        setReps.setText(getContext().getResources().getString(R.string.reps) + " " + data.getRep(data.size));
         setDate.setText(getContext().getResources().getString(R.string.date) + " " + date);
 
         return customView;

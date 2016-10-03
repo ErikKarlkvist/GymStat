@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import org.w3c.dom.Text;
 
 import java.text.ParseException;
@@ -66,7 +68,7 @@ public class AddSetFragment extends Fragment {
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String wgt = (weight.getText().toString());
+            double wgt = Double.parseDouble(weight.getText().toString());
             String setName = name.getText().toString();
             String reps = r.getText().toString();
             String reps2 = r2.getText().toString();
@@ -78,7 +80,7 @@ public class AddSetFragment extends Fragment {
         }
     };
 
-    private void addToPrefs(String setName, String weight, String reps, String reps2, String description) {
+    private void addToPrefs(String setName, double weight, String reps, String reps2, String description) {
         String sprefs = getResources().getString(R.string.sharedpreferences);
         SharedPreferences prefs = getContext().getSharedPreferences(sprefs, Context.MODE_PRIVATE);
         Set<String> setNames = prefs.getStringSet(sNames, null); // can't be null
@@ -87,21 +89,19 @@ public class AddSetFragment extends Fragment {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putStringSet(sNames, setNames);
 
-        editor.putString(setName + "w", weight);
-        editor.putString(setName + "r", reps);
-        editor.putString(setName + "r2", reps2);
-
-        if(description != ""){
-            editor.putString(setName + "desc", description);
-        } else {
-            editor.putString(setName + "desc", "No description");
-        }
-
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd");
         String sdate = sdf.format(date);
+        Data data;
+        if(description != ""){
+            data = new Data(sdate, weight, reps + "x" + reps2, description);
+        } else {
+            data = new Data(sdate, weight, reps + "x" + reps2, "No description");
+        }
+        Gson gson = new Gson();
+        String json = gson.toJson(data);
+        editor.putString(setName, json);
 
-        editor.putString(setName +"d", sdate);
         editor.commit();
 
     }

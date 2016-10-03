@@ -9,9 +9,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,6 +36,7 @@ public class ViewSetFragment extends Fragment {
     SharedPreferences prefs;
 
     private Button delete;
+    private Button add;
     public ViewSetFragment(){}
 
     public ViewSetFragment(String setName) {
@@ -48,6 +54,17 @@ public class ViewSetFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //get save data from sharedpreferences
+        String sprefs = getResources().getString(R.string.sharedpreferences);
+        prefs = getContext().getSharedPreferences(sprefs, Context.MODE_PRIVATE);
+
+        Gson gson = new Gson();
+        String json = prefs.getString(setName, "");
+        Data data = gson.fromJson(json, Data.class);
+
+        String date = data.getDate(data.size);
+        ArrayList<String> dates = data.getDateList();
+        generateList(dates,data);
 
         viewName = (TextView)view.findViewById(R.id.view_set_name);
         viewWeight = (TextView)view.findViewById(R.id.view_set_weight);
@@ -56,45 +73,50 @@ public class ViewSetFragment extends Fragment {
         viewDesc = (TextView) view.findViewById(R.id.view_set_desc);
 
         delete = (Button) view.findViewById(R.id.delete_set);
-
-        //get save data from sharedpreferences
-        String sprefs = getResources().getString(R.string.sharedpreferences);
-        prefs = getContext().getSharedPreferences(sprefs, Context.MODE_PRIVATE);
+        add = (Button) view.findViewById(R.id.add_to_set_button);
 
         Resources resources = getResources();
-        String weight = resources.getString(R.string.weight2) + " " + prefs.getString(setName+"w", "N/A") + "kg";
-        String reps = resources.getString(R.string.reps) + " "
-                    + prefs.getString(setName+"r", "N/A") +"x" + prefs.getString(setName+"r2", "N/A");
-        String date = resources.getString(R.string.date)+ " " + prefs.getString(setName+"d", "N/A");
-        String desc = prefs.getString(setName+"desc", "No description");
+        String weight = resources.getString(R.string.weight2) + " " + data.getWeight(data.size) + "kg";
+        String reps = resources.getString(R.string.reps) + " " + data.getRep(data.size);
+        String date2 = resources.getString(R.string.date)+ " " + date;
+        String desc = data.getDesc();
 
 
         viewName.setText(setName);
         viewWeight.setText(weight);
         viewReps.setText(reps);
-        viewDate.setText(date);
+        viewDate.setText(date2);
         viewDesc.setText(desc);
 
         delete.setOnClickListener(deleteListener);
+        add.setOnClickListener(addListener);
+    }
+
+    private void generateList(ArrayList<String> dates, Data data) {
+        ArrayAdapter<String> listAdapter = new WeightListAdapter(this.getContext(), R.layout.set_list_view, dates, data);
+        ListView setList = (ListView) getView().findViewById(R.id.view_weight_list);
+        setList.setAdapter(listAdapter);
     }
 
     View.OnClickListener deleteListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             SharedPreferences.Editor editor = prefs.edit();
-            editor.remove(setName+"w");
-            editor.remove(setName+"d");
-            editor.remove(setName+"r");
-            editor.remove(setName+"r2");
-            editor.remove(setName+"desc");
+            editor.remove(setName);
 
             Set<String> setNames = prefs.getStringSet(sNames, null);
             setNames.remove(setName);
             editor.putStringSet(sNames, setNames);
-
+            editor.commit();
             MainFragment mainFragment = new MainFragment();
             changeFragment(mainFragment);
+        }
+    };
 
+    View.OnClickListener addListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            changeFragment(new AddToSetFragment(setName));
         }
     };
 

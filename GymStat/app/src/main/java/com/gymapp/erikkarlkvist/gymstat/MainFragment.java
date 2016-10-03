@@ -63,7 +63,6 @@ public class MainFragment extends Fragment {
     private ArrayList<String> getSetNames() {
         String sprefs = getResources().getString(R.string.sharedpreferences);
         SharedPreferences prefs = getContext().getSharedPreferences(sprefs, Context.MODE_PRIVATE);
-
         Set<String> setNames;
         if(prefs.getStringSet(sNames, null) == null){
             setNames = new HashSet<>();
