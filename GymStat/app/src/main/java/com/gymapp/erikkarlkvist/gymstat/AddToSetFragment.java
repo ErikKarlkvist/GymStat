@@ -5,9 +5,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -70,7 +73,8 @@ public class AddToSetFragment extends Fragment {
     View.OnClickListener doneListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
             double newWeight = Double.parseDouble(weight.getText().toString());
             String newRep = (rep1.getText()).toString()
                     + "x" + (rep2.getText()).toString();
@@ -80,7 +84,7 @@ public class AddToSetFragment extends Fragment {
             String sdate = sdf.format(date);
 
             String desc = data.getDesc();
-            data.addData(sdate, newWeight, newRep, desc);
+            data.addData(sdate, newWeight, newRep, desc, "easy");
 
             Gson gson = new Gson();
             String json = gson.toJson(data);

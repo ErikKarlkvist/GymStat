@@ -3,71 +3,72 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:padding="@dimen/activity_horizontal_margin"
+        android:id="@+id/coloredBackground"
         >
 
         <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="100dp"
             android:layout_height="140dp"
-            android:id="@+id/imageView3"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:src="@drawable/filip" />
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="left" >
+                    android:gravity="left"
+                    android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/view_set_name"
                         style="@style/head_font"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Small Text"
-                        android:id="@+id/view_set_name"
+                        android:paddingBottom="@dimen/activity_horizontal_margin"
                         android:paddingTop="8dp"
-                        android:paddingBottom="@dimen/activity_horizontal_margin" />
+                        android:text="Small Text" />
 
                     <TextView
+                        android:id="@+id/view_set_weight"
                         style="@style/normal_font"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:paddingRight="@dimen/activity_vertical_margin"
                         android:text="@string/weight2"
-                        android:paddingRight="@dimen/activity_vertical_margin"
-                        android:id="@+id/view_set_weight" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/view_set_reps"
                         style="@style/normal_font"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:paddingRight="@dimen/activity_vertical_margin"
                         android:text="@string/reps"
-                        android:paddingRight="@dimen/activity_vertical_margin"
-                        android:id="@+id/view_set_reps" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <TextView
+                        android:id="@+id/view_set_date"
                         style="@style/normal_font"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:paddingRight="@dimen/activity_horizontal_margin"
                         android:text="@string/date"
-                        android:id="@+id/view_set_date"
-                        android:paddingRight="@dimen/activity_horizontal_margin" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -162,7 +163,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/progressBar"
-                android:layout_alignBottom="@+id/button2"
                 android:layout_toLeftOf="@+id/edit_set"
                 android:layout_toStartOf="@+id/edit_set" />
 

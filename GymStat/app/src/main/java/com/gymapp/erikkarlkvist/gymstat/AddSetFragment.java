@@ -94,9 +94,9 @@ public class AddSetFragment extends Fragment {
         String sdate = sdf.format(date);
         Data data;
         if(description != ""){
-            data = new Data(sdate, weight, reps + "x" + reps2, description);
+            data = new Data(sdate, weight, reps + "x" + reps2, description, "easy");
         } else {
-            data = new Data(sdate, weight, reps + "x" + reps2, "No description");
+            data = new Data(sdate, weight, reps + "x" + reps2, "No description", "easy");
         }
         Gson gson = new Gson();
         String json = gson.toJson(data);

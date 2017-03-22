@@ -4,163 +4,196 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="32dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="32dp"
-        >
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:baselineAligned="false">
 
         <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:id="@+id/imageView2"
-            android:src="@drawable/default_no_image"
-            />
-
+            android:src="@drawable/default_no_image" />
 
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="end"
-            >
+            android:orientation="vertical">
 
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/set_name"
                 android:id="@+id/textView3"
                 style="@style/normal_font"
-                android:padding="@dimen/nav_header_vertical_spacing" />
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/weight"
+                android:padding="@dimen/nav_header_vertical_spacing"
+                android:text="@string/set_name"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
                 android:id="@+id/textView2"
                 style="@style/normal_font"
-                android:padding="@dimen/nav_header_vertical_spacing"
-                />
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Reps:"
+                android:padding="@dimen/nav_header_vertical_spacing"
+                android:text="@string/weight"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
                 android:id="@+id/textView4"
                 style="@style/normal_font"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:padding="@dimen/nav_header_vertical_spacing"
-                />
+                android:text="Reps:"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+
 
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical"
             android:weightSum="1">
 
             <EditText
+                android:id="@+id/set_name_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:text=""
                 android:ems="10"
-                android:id="@+id/set_name_text"
-                android:singleLine="true"
+                android:inputType="textPersonName"
                 android:maxLength="15"
-                />
+                android:singleLine="true"
+                android:text="" />
 
             <EditText
+                android:id="@+id/weight_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal|numberSigned"
-                android:text=""
+                android:layout_weight="0.15"
                 android:ems="10"
-                android:id="@+id/weight_text"
-                android:layout_weight="0.42"
+                android:inputType="numberDecimal|numberSigned"
+                android:maxLength="10"
                 android:nextFocusDown="@+id/reps_text"
                 android:singleLine="true"
-                android:maxLength="10"
-                />
+                android:text="" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
                 <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/reps_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="63dp"
                     android:layout_weight="1"
-                    android:numeric="integer"
-                    android:singleLine="true"
-                    android:nextFocusDown="@+id/reps_text2"
                     android:imeOptions="actionNext"
                     android:maxLength="2"
-                    />
+                    android:nextFocusDown="@+id/reps_text2"
+                    android:numeric="integer"
+                    android:singleLine="true" />
 
                 <TextView
+                    android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="x"
-                    android:id="@+id/textView5"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
 
                     />
 
                 <EditText
-                    android:layout_width="65dp"
-                    android:layout_height="wrap_content"
                     android:id="@+id/reps_text2"
-                    android:layout_weight="0.09"
-                    android:numeric="integer"
-                    android:singleLine="true"
+                    android:layout_width="65dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.51"
                     android:imeOptions="actionDone"
                     android:maxLength="3"
-                    />
+                    android:numeric="integer"
+                    android:singleLine="true" />
+
             </LinearLayout>
+
+
         </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:orientation="vertical">
+        android:layout_height="63dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <TextView
+            android:id="@+id/difficultyText"
+            style="@style/normal_font"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Description:"
+            android:layout_weight="0.28"
+            android:padding="@dimen/nav_header_vertical_spacing"
+            android:text="Difficulty:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <RadioButton
+            android:id="@+id/easy"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:checked="true"
+            android:text="easy" />
+
+        <RadioButton
+            android:id="@+id/medium"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="medium" />
+
+        <RadioButton
+            android:id="@+id/hard"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="hard" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/textView7"
             style="@style/normal_font"
-            android:id="@+id/textView7" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <EditText
+            android:id="@+id/set_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:drawable/editbox_dropdown_light_frame"
+            android:gravity="top"
             android:inputType="textMultiLine"
             android:lines="4"
             android:maxLength="50"
-            android:gravity="top"
-            android:singleLine="false"
-            android:background="@android:drawable/editbox_dropdown_light_frame"
-            android:id="@+id/set_description"
-            />
+            android:singleLine="false" />
 
     </LinearLayout>
 

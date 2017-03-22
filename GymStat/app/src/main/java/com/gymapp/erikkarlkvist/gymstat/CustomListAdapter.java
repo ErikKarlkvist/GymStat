@@ -37,6 +37,8 @@ public class CustomListAdapter extends ArrayAdapter<String>{
         View customView = inflator.inflate(R.layout.set_list_view, parent, false);
         String sprefs = getContext().getResources().getString(R.string.sharedpreferences);
         SharedPreferences prefs = getContext().getSharedPreferences(sprefs, Context.MODE_PRIVATE);
+        //prefs.edit().clear();
+       // prefs.edit().commit();
 
         String setName = sets.get(position);
         Gson gson = new Gson();

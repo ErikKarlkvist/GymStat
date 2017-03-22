@@ -63,11 +63,13 @@ public class MainFragment extends Fragment {
     private ArrayList<String> getSetNames() {
         String sprefs = getResources().getString(R.string.sharedpreferences);
         SharedPreferences prefs = getContext().getSharedPreferences(sprefs, Context.MODE_PRIVATE);
+        //in case of clear needed
+        //prefs.edit().clear().commit();
         Set<String> setNames;
         if(prefs.getStringSet(sNames, null) == null){
             setNames = new HashSet<>();
             SharedPreferences.Editor editor = prefs.edit();
-            System.out.println("Hello");
+
             editor.putStringSet(sNames, setNames);
             editor.commit();
         } else {

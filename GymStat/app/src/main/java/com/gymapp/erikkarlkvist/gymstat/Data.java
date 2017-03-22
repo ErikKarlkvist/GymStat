@@ -1,5 +1,8 @@
 package com.gymapp.erikkarlkvist.gymstat;
 
+import android.content.res.Resources;
+import android.graphics.Color;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,14 +19,14 @@ public class Data {
     private List<Double> weights;
     private List<String> reps;
     public int size;
+    public String difficulty;
 
-    public Data(String date, double weight, String rep, String desc){
+    public Data(String date, double weight, String rep, String desc, String diff){
         size = 0;
         this.desc = desc;
-
         dates = new ArrayList<>();
         dates.add(date);
-
+        difficulty = diff;
         weights = new ArrayList<>();
         weights.add(weight);
 
@@ -41,10 +44,11 @@ public class Data {
     }
 
     //adds new date at start of list
-    public void addData(String date, double weight, String rep, String desc){
+    public void addData(String date, double weight, String rep, String desc, String diff){
         dates.add(date);
         weights.add(weight);
         reps.add(rep);
+        difficulty = diff;
         this.desc = desc;
         size++;
     }
@@ -60,4 +64,6 @@ public class Data {
     public ArrayList<String> getDateList(){
         return dates;
     }
+
+    public String getDifficulty() {return difficulty; }
 }
