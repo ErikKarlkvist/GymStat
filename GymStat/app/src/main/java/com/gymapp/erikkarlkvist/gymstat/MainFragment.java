@@ -32,6 +32,7 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         MainActivity.showFab();
+        System.out.print("fuck ödeen ännu mer");
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
