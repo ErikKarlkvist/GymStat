@@ -75,94 +75,91 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:weightSum="1">
 
         <TextView
-            style="@style/head_font"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:text="Description:"
             android:id="@+id/textView10"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="No description"
-            android:padding="@dimen/activity_horizontal_margin"
-            style="@style/normal_font"
-            android:id="@+id/view_set_desc" />
-
-        <TextView
             style="@style/head_font"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="History: "
-            android:id="@+id/textView11"
-            android:layout_below="@+id/editText"
-            android:layout_alignParentLeft="true"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            />
-
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="184dp"
-            android:id="@+id/view_weight_list"
-            android:layout_below="@+id/textView11"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:text="Description:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/view_set_desc"
+            style="@style/normal_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:padding="@dimen/activity_horizontal_margin"
-            />
+            android:text="No description"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/textView11"
+            style="@style/head_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/editText"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:text="History: "
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <ListView
+            android:id="@+id/view_weight_list"
+            android:layout_width="wrap_content"
+            android:layout_height="184dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView11"
+            android:padding="@dimen/activity_horizontal_margin" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            >
+            android:layout_marginBottom="@dimen/activity_horizontal_margin">
 
             <Button
+                android:id="@+id/add_to_set_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:background="@color/colorPrimary"
-                android:id="@+id/add_to_set_button" />
+                android:text="Add" />
 
             <Button
+                android:id="@+id/edit_set"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Edit"
-                android:id="@+id/edit_set"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_toEndOf="@+id/add_to_set_button"
                 android:layout_toRightOf="@+id/add_to_set_button"
                 android:background="@color/colorPrimary"
-                android:layout_toEndOf="@+id/add_to_set_button" />
+                android:text="Edit" />
 
             <Button
+                android:id="@+id/delete_set"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Delete"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:id="@+id/delete_set"
-                android:background="@color/colorWarningRed"
                 android:layout_alignBottom="@+id/edit_set"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:background="@color/colorWarningRed"
+                android:text="Delete" />
 
             <ProgressBar
+                android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/progressBar"
                 android:layout_toLeftOf="@+id/edit_set"
                 android:layout_toStartOf="@+id/edit_set" />
 
