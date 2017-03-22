@@ -53,7 +53,7 @@ public class AddToSetFragment extends Fragment {
 
         String sprefs = getResources().getString(R.string.sharedpreferences);
         prefs = getContext().getSharedPreferences(sprefs, Context.MODE_PRIVATE);
-
+        System.out.println("kek");
 
         Gson gson = new Gson();
         String json = prefs.getString(setName, "");
