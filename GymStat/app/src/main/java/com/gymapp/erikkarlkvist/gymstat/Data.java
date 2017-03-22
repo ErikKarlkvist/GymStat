@@ -49,7 +49,7 @@ public class Data {
         size++;
     }
 
-    public double getWeight(int index){
+    public double   getWeight(int index){
         return weights.get(index);
     }
 
