@@ -132,13 +132,15 @@
                     android:id="@+id/medium"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="medium" />
+                    android:text="medium"
+                    />
 
                 <RadioButton
                     android:id="@+id/hard"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="hard" />
+                    android:text="hard"
+                    />
 
             </LinearLayout>
         </LinearLayout>

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,6 +20,8 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+
+import static android.support.v4.content.res.ResourcesCompat.getColor;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,6 +40,8 @@ public class ViewSetFragment extends Fragment {
 
     private Button delete;
     private Button add;
+    private LinearLayout coloredBackground;
+
     public ViewSetFragment(){}
 
     public ViewSetFragment(String setName) {
@@ -71,6 +76,7 @@ public class ViewSetFragment extends Fragment {
         viewReps = (TextView)view.findViewById(R.id.view_set_reps);
         viewDate = (TextView)view.findViewById(R.id.view_set_date);
         viewDesc = (TextView) view.findViewById(R.id.view_set_desc);
+        coloredBackground = (LinearLayout) view.findViewById(R.id.coloredBackground);
 
         delete = (Button) view.findViewById(R.id.delete_set);
         add = (Button) view.findViewById(R.id.add_to_set_button);
@@ -80,8 +86,16 @@ public class ViewSetFragment extends Fragment {
         String reps = resources.getString(R.string.reps) + " " + data.getRep(data.size);
         String date2 = resources.getString(R.string.date)+ " " + date;
         String desc = data.getDesc();
+        String diff = data.getDifficulty(data.size);
 
-
+        //changes the background color
+        if(diff.equals("hard")){
+            coloredBackground.setBackgroundColor(getColor(getResources(), R.color.hard, null));
+        } else if (diff.equals("easy")){
+            coloredBackground.setBackgroundColor(getColor(getResources(), R.color.easy, null));
+        } else {
+            coloredBackground.setBackgroundColor(getColor(getResources(), R.color.medium, null));
+        }
         viewName.setText(setName);
         viewWeight.setText(weight);
         viewReps.setText(reps);

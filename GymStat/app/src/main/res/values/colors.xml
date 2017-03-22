@@ -7,7 +7,7 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorWarningRed">#f13131</color>
 
-    <color name="easy">#80ff8a</color>
-    <color name="medium">#f5ff69</color>
-    <color name="hard">#ff4e45</color>
+    <color name="easy">#c9ffcc</color>
+    <color name="medium">#ffffff</color>
+    <color name="hard">#fcb5b4</color>
 </resources>

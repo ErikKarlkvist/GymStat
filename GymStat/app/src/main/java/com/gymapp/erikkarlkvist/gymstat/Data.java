@@ -19,14 +19,15 @@ public class Data {
     private List<Double> weights;
     private List<String> reps;
     public int size;
-    public String difficulty;
+    private List<String> difficulty;
 
     public Data(String date, double weight, String rep, String desc, String diff){
         size = 0;
         this.desc = desc;
         dates = new ArrayList<>();
         dates.add(date);
-        difficulty = diff;
+        difficulty = new ArrayList<>();
+        difficulty.add(diff);
         weights = new ArrayList<>();
         weights.add(weight);
 
@@ -48,7 +49,7 @@ public class Data {
         dates.add(date);
         weights.add(weight);
         reps.add(rep);
-        difficulty = diff;
+        difficulty.add(diff);
         this.desc = desc;
         size++;
     }
@@ -65,5 +66,5 @@ public class Data {
         return dates;
     }
 
-    public String getDifficulty() {return difficulty; }
+    public String getDifficulty(int index) {return difficulty.get(index); }
 }
